@@ -10,6 +10,6 @@ public class Titulo extends JLabel {
 		super(text);
 		
 		setForeground(Ventana.text);
-		setFont(Ventana.fuenteTitulo);
+		setFont(Ventana.fuente);
 	}
 }

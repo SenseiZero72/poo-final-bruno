@@ -17,6 +17,9 @@ public Carrera(String nombre, int cantidadOptativasNecesarias) {
 }
 
 
+public PlanDeEstudios getPlan() {
+	return plan;
+}
 public int getCantidadOptativasNecesarias() { return cantidadOptativasNecesarias; }
 public void setCantidadOptativasNecesarias(int cantidadOptativasNecesarias) { 
     this.cantidadOptativasNecesarias = cantidadOptativasNecesarias; 

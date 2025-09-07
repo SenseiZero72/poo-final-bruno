@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import Controller.ControladorEstudiantes;
 import Model.Facultad;
 import View.Paneles.NavBar;
+import View.Paneles.PanelAgregarMateria;
 import View.Paneles.PanelCarreras;
 import View.Paneles.PanelEstudiantes;
 import View.Paneles.PanelMaterias;
@@ -40,6 +41,7 @@ public class Ventana extends JFrame{
 		panelActual = new PanelCarreras();
 		paneles.put("Carreras",panelActual);
 		paneles.put("Materias",new PanelMaterias());
+		paneles.put("AgregarMateria",new PanelAgregarMateria());
 		ControladorEstudiantes ctrlEstudiantes = new ControladorEstudiantes(Facultad.getInstanciaFacultad());
 		paneles.put("Estudiantes", new PanelEstudiantes(ctrlEstudiantes));
 		body.add(panelActual, BorderLayout.CENTER);
@@ -49,9 +51,6 @@ public class Ventana extends JFrame{
 		if (panel==null) return;
 		body.remove(panelActual);
 		panelActual= panel;
-		if (panelActual instanceof PanelEstudiantes) {
-	        ((PanelEstudiantes) panelActual).cargarDatos();
-	    }
 		body.add(panelActual, BorderLayout.CENTER);
 		body.revalidate();
 		body.repaint();
@@ -60,7 +59,7 @@ public class Ventana extends JFrame{
 	public static Color background = new Color(0x303030);
 	public static Color nav = new Color(0x404040);
 	public static Color text = new Color(0xe0e0e0);
-	public static Font fuenteTitulo = new Font("Arial", Font.BOLD, 20);
+	public static Font fuente = new Font("Arial", Font.BOLD, 20);
 	public static Font fuenteNav = new Font("Arial", Font.BOLD, 20);
 	
 }

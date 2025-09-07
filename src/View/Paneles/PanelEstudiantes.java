@@ -1,47 +1,37 @@
 package View.Paneles;
 
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-
+import javax.swing.JPanel;
+import View.Componentes.BotonBase;
 import View.Componentes.Panel;
 import View.Componentes.Titulo;
 import View.Componentes.Ventana;
 import Controller.ControladorEstudiantes;
-import Model.Alumno;
-
-import java.util.List;
+import java.awt.FlowLayout;
 
 public class PanelEstudiantes extends Panel {
     private static final long serialVersionUID = 1L;
-    private JList<String> listaEstudiantes;
-    private DefaultListModel<String> modeloLista;
-    private ControladorEstudiantes controlador;
-
+    
     public PanelEstudiantes(ControladorEstudiantes controlador) {
-        this.controlador = controlador;
-
-        var titulo = new Titulo("Listado de Estudiantes");
-        box("col");
+    	box("col");
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         setBackground(Ventana.background);
+        
+        JPanel topBar = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        topBar.setOpaque(false); 
 
-        modeloLista = new DefaultListModel<>();
-        listaEstudiantes = new JList<>(modeloLista);
-        var scroll = new JScrollPane(listaEstudiantes);
+        var titulo = new Titulo("Listado de Estudiantes");
 
-        add(titulo);
-        add(scroll);
+        var botonAgregar = new BotonBase("Agregar Estudiante");
+        botonAgregar.setFontLabel(Ventana.fuente);
+        botonAgregar.size(250, 30); 
+        botonAgregar.addActionListener(e -> {
+            Ventana.CambiarPanel("AgregarCarrera"); 
+        });
 
-        cargarDatos();
-    }
+        topBar.add(titulo);
+        topBar.add(botonAgregar);
 
-    public void cargarDatos() {
-        modeloLista.clear();
-        List<Alumno> alumnos = controlador.obtenerListaAlumnos();
-        for (Alumno a : alumnos) {
-            modeloLista.addElement(a.getDni() + " - " + a.getNombre());
-        }
+        add(topBar);
     }
 }

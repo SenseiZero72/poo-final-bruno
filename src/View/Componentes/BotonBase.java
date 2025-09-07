@@ -5,7 +5,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class BotonBase extends Panel {
-    private JLabel label;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel label;
     private boolean hovered = false;
     private boolean pressed = false;
 

@@ -1,9 +1,7 @@
-import Model.Facultad;
 import View.Componentes.Ventana;
-import Model.Alumno;
 
 public class Main {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         String rutaArchivo = "src/alumnos.txt";
         Cargador.cargarAlumnosDesdeArchivo(rutaArchivo);
 
