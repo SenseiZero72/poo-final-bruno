@@ -11,7 +11,8 @@ public class Main {
 //            System.out.println(dni + " - " + alumno.getNombre());
 //        });
         
-        var vent = new Ventana();        
+        var vent = new Ventana();
+        vent.setVisible(true);
     }
     
     

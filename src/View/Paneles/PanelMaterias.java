@@ -22,7 +22,7 @@ public class PanelMaterias extends Panel {
 
         var titulo = new Titulo("Listado de Materias");
         var botonAgregar = new BotonBase("Agregar Materia");
-        botonAgregar.setFontLabel(Ventana.fuente);
+        botonAgregar.setFontLabel(Ventana.fuenteNav);
         botonAgregar.size(250, 30); 
         botonAgregar.addActionListener(e -> {
             Ventana.CambiarPanel("AgregarMateria"); 

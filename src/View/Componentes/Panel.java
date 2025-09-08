@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
@@ -26,6 +28,12 @@ public class Panel extends JPanel{
 	public void flow(int align) {
 	    setLayout(new FlowLayout(align));
 	}
+	
+	
+	public void flow(int align, int spacingWidth, int spacingHeight) {
+	    setLayout(new FlowLayout(align, spacingWidth, spacingHeight));
+	}
+	
 	public void size(int width, int height) {
 		setPreferredSize(new Dimension(width, height));
 	}
@@ -36,5 +44,17 @@ public class Panel extends JPanel{
 		} else {
 			setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		}
+	}
+	
+	public void padding(int x, int y) {
+		setBorder(BorderFactory.createEmptyBorder(y, x, y, x));
+	}
+	
+	public void borderLine(Color color) {
+		setBorder(BorderFactory.createLineBorder(color));
+	}
+	
+	public void addGap(int gapx, int gapy) {
+		add(Box.createRigidArea(new Dimension(gapx, gapy)));
 	}
 }

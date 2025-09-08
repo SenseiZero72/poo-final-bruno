@@ -23,7 +23,7 @@ public class PanelEstudiantes extends Panel {
         var titulo = new Titulo("Listado de Estudiantes");
 
         var botonAgregar = new BotonBase("Agregar Estudiante");
-        botonAgregar.setFontLabel(Ventana.fuente);
+        botonAgregar.setFontLabel(Ventana.fuenteNav);
         botonAgregar.size(250, 30); 
         botonAgregar.addActionListener(e -> {
             Ventana.CambiarPanel("AgregarCarrera"); 

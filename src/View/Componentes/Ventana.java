@@ -29,7 +29,6 @@ public class Ventana extends JFrame{
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
 		init();
-		setVisible(true);
 	}
 	
 	public void init() {
@@ -57,9 +56,19 @@ public class Ventana extends JFrame{
 	}
 	
 	public static Color background = new Color(0x303030);
+	public static Color backgroundEncabezadoTabla = new Color(0x202020);
+	public static Color backgroundTabla = new Color(0x404040);
 	public static Color nav = new Color(0x404040);
 	public static Color text = new Color(0xe0e0e0);
-	public static Font fuente = new Font("Arial", Font.BOLD, 20);
+	public static Font fuenteTitulo = new Font("Arial", Font.BOLD, 30);
 	public static Font fuenteNav = new Font("Arial", Font.BOLD, 20);
+	
+	public static Color boton_editar_normal  = new Color(76, 175, 80);
+    public static Color boton_editar_hover   = new Color(102, 187, 106);
+    public static Color boton_editar_pressed = new Color(56, 142, 60);
+    
+    public static final Color boton_eliminar_normal  = new Color(244, 67, 54);
+    public static final Color boton_eliminar_hover = new Color(229, 115, 115);
+    public static final Color boton_eliminar_pressed = new Color(211, 47, 47);
 	
 }

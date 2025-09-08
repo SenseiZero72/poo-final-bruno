@@ -3,36 +3,45 @@ package View.Paneles;
 import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-
-import View.Componentes.BotonBase;
 import View.Componentes.Panel;
+import View.Componentes.ScrollPanel;
+import View.Componentes.Tabla;
 import View.Componentes.Titulo;
 import View.Componentes.Ventana;
 
 public class PanelCarreras extends Panel{
 	private static final long serialVersionUID = 1L;
-
+	private static Tabla listaCarreras;
+	
 	public PanelCarreras() {
 		box("col");
-        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        setBackground(Ventana.background);
-        
-        JPanel topBar = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
-        topBar.setOpaque(false); 
+		var titulo = new Titulo("Listado de Carreras");
+		setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		setBackground(Ventana.background);
+		
+		var contenedorTitulo = new Panel();
+		contenedorTitulo.size(1000, 50);
+		contenedorTitulo.flow(FlowLayout.LEFT);
+		contenedorTitulo.setBorder(BorderFactory.createEmptyBorder(10,100,10,100));
+		contenedorTitulo.setBackground(Ventana.background);
+		contenedorTitulo.add(titulo);
+		add(contenedorTitulo);
+		
+		String[][] datos = new String[10][4];
+		
+		datos[0] = new String[] {"ID", "Nombre", "Apellido", "Edad", "Acciones"};
 
-        var titulo = new Titulo("Listado de Carreras");
-
-        var botonAgregar = new BotonBase("Agregar Carrera");
-        botonAgregar.setFontLabel(Ventana.fuente);
-        botonAgregar.size(250, 30); 
-        botonAgregar.addActionListener(e -> {
-            Ventana.CambiarPanel("AgregarCarrera"); 
-        });
-
-        topBar.add(titulo);
-        topBar.add(botonAgregar);
-
-        add(topBar);
-    }
+		for (int i = 1; i < datos.length; i++) {
+		    datos[i][0] = String.valueOf(i + 1);          // ID
+		    datos[i][1] = "Nombre_" + (i + 1);            // Nombre
+		    datos[i][2] = "Apellido_" + (i + 1);          // Apellido
+		    datos[i][3] = String.valueOf(18 + (i % 50));  // Edad entre 18 y 67
+		}
+		
+		listaCarreras = new Tabla(datos, 4, (data) -> System.out.println("Editar: " + data[0]), (data) -> System.out.println("Eliminar: " + data[0]));
+		ScrollPanel scroll = new ScrollPanel(listaCarreras, Ventana.background, Ventana.backgroundTabla);
+		scroll.setBorder(BorderFactory.createEmptyBorder(10,100,10,100));
+		//scroll.setPreferredSize(new Dimension(600, 400));
+		add(scroll);
+	}
 }
