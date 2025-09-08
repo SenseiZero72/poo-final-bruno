@@ -29,10 +29,15 @@ public class Facultad {
 		Alumno alumno = new Alumno(dni, nombre);
 	    alumnosMap.put(dni, alumno);
 	}
-//	public boolean nuevaMateria() {
-//		materias.add()
-//	}
+	public boolean nuevaMateria(String nombre, Materia.Tipo tipo, boolean tienePromocion) {
+	    Materia materia = new Materia(nombre, tipo, tienePromocion);
+	    return materias.add(materia);
+	}
 	
+
+	public Set<Materia> getMaterias() {
+		return materias;
+	}
 
 	public Map<Integer, Alumno> getAlumnosMap() {
 		return alumnosMap;
