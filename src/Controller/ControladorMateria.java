@@ -1,24 +1,29 @@
 package Controller;
 
 import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 import Model.Materia;
 import Model.Materia.Tipo;
 import Model.Facultad;
 
 
 public class ControladorMateria {
-	private Facultad facultad;
-
-    public ControladorMateria(Facultad facultad) {
-        this.facultad = facultad;
+	private final Facultad facultad;
+    public ControladorMateria() {
+        this.facultad = Facultad.getInstanciaFacultad();
     }
     
     public boolean AgregarMateria(String nombre, Tipo categoria,boolean promo) {
     	
     	return facultad.nuevaMateria(nombre, categoria, promo);
     }
-    public Set<Materia> getTodasLasMaterias() {
-        return facultad.getMaterias();
+    public List<String> getTodasLasMaterias() {
+        List<String> nombres = new ArrayList<>();
+        for (Materia m : facultad.getMaterias()) {
+            nombres.add(m.getNombre());
+        }
+        return nombres;
     }
+
 }

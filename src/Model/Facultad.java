@@ -33,9 +33,14 @@ public class Facultad {
 	    Materia materia = new Materia(nombre, tipo, tienePromocion);
 	    return materias.add(materia);
 	}
-	
 
-	public Set<Materia> getMaterias() {
+    public void agregarCarrera(String nombre, int cantidadOptativasNecesarias, String tipoPlan) {
+        Carrera carrera = new Carrera(nombre, cantidadOptativasNecesarias);
+        carrera.crearPlan(tipoPlan);
+        carrerasMap.put(carrera.getNombre(), carrera);
+    }
+
+        public Set<Materia> getMaterias() {
 		return materias;
 	}
 

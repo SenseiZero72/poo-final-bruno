@@ -35,6 +35,9 @@ public void crearPlan(String tipo) {
             case "C":
                 plan = new PlanC();
                 break;
+            case "D":
+                plan = new PlanD();
+                break;
             case "E":
                 plan = new PlanE();
                 break;
@@ -55,7 +58,11 @@ public void crearPlan(String tipo) {
         }
         return disponibles;
     }
+    public void agregarMateriaAlPlan(Materia materia, int cuatrimestre) {
+        plan.agregarMateria(materia, cuatrimestre);
+    }
 	public boolean finalizo(Map<Materia,Cursada> estado){
 		return plan.termino(estado,cantidadOptativasNecesarias);
 	}
+
 }

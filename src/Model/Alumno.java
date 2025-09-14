@@ -1,26 +1,22 @@
 package Model;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Alumno {
 	private String nombre;
 	private int dni;
-	private List <Carrera> carreras;
-	private Map<Materia,Cursada> estadosMateria;  
+    private Set<Carrera> carreras = new HashSet<>();
+	private Map<Materia,Cursada> estadosMateria;
 	
 	public Alumno(int dni, String nombre) {
         this.nombre = nombre;
         this.dni = dni;
         this.estadosMateria = new HashMap<>();
-        this.carreras = new ArrayList<Carrera>();
+        this.carreras = new HashSet<Carrera>();
     }
 	
-	public void inscribirseCarrera(Carrera c) {
-        carreras.add(c);
+	public boolean inscribirseCarrera(Carrera c) {
+        return carreras.add(c);
     }
-	
 	public Map<Materia,Cursada> getestadosMateria(){
 	    return estadosMateria;
 	}
@@ -29,7 +25,7 @@ public class Alumno {
 	        return;
 	    }
 	    if (c.puedeCursar(estadosMateria, materia)) {
-	        estadosMateria.put(materia, new Cursada(Cursada.Estado.APROBADO_PARCIAL, -1));
+	        estadosMateria.put(materia, new Cursada(Cursada.Estado.INSCRIPTO, -1));
 	    }
 	}
 	public boolean finalizoCarrera(Carrera c) {
