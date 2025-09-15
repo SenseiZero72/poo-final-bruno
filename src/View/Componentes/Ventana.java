@@ -5,15 +5,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JFrame;
+import javax.swing.*;
+import javax.swing.border.Border;
 
 import Controller.ControladorEstudiantes;
-import Model.Facultad;
-import View.Paneles.NavBar;
-import View.Paneles.PanelAgregarMateria;
-import View.Paneles.PanelCarreras;
-import View.Paneles.PanelEstudiantes;
-import View.Paneles.PanelMaterias;
+import Model.*;
+import View.Paneles.*;
 
 public class Ventana extends JFrame{
 
@@ -43,6 +40,7 @@ public class Ventana extends JFrame{
 		paneles.put("AgregarMateria",new PanelAgregarMateria());
 		ControladorEstudiantes ctrlEstudiantes = new ControladorEstudiantes(Facultad.getInstanciaFacultad());
 		paneles.put("Estudiantes", new PanelEstudiantes(ctrlEstudiantes));
+		paneles.put("Agregar Carrera", new PanelAgregarCarrera());
 		body.add(panelActual, BorderLayout.CENTER);
 	}
 	public static void CambiarPanel(String p) {
@@ -54,7 +52,7 @@ public class Ventana extends JFrame{
 		body.revalidate();
 		body.repaint();
 	}
-	
+
 	public static Color background = new Color(0x303030);
 	public static Color backgroundEncabezadoTabla = new Color(0x202020);
 	public static Color backgroundTabla = new Color(0x404040);
@@ -70,5 +68,16 @@ public class Ventana extends JFrame{
     public static final Color boton_eliminar_normal  = new Color(244, 67, 54);
     public static final Color boton_eliminar_hover = new Color(229, 115, 115);
     public static final Color boton_eliminar_pressed = new Color(211, 47, 47);
+
+	public static final Color boton_nuevo_normal  = new Color(140, 47, 211);
+	public static final Color boton_nuevo_hover = new Color(162, 115, 229);
+	public static final Color boton_nuevo_pressed = new Color(127, 54, 244);
+
+	public static final Color boton_volver_normal  = new Color(153, 151, 156);
+	public static final Color boton_volver_hover = new Color(173, 171, 176);
+	public static final Color boton_volver_pressed = new Color(112, 112, 115);
+
+	public static final String[] planes = new String[] { "A", "B", "C", "D", "E" };
+	public static final Border bordeGeneral = BorderFactory.createEmptyBorder(10,100,10,100);
 	
 }

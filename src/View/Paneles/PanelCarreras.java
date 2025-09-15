@@ -1,13 +1,12 @@
 package View.Paneles;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 
 import javax.swing.BorderFactory;
+
+import View.Componentes.*;
 import View.Componentes.Panel;
-import View.Componentes.ScrollPanel;
-import View.Componentes.Tabla;
-import View.Componentes.Titulo;
-import View.Componentes.Ventana;
+import View.botones.BotonNuevo;
 
 public class PanelCarreras extends Panel{
 	private static final long serialVersionUID = 1L;
@@ -20,12 +19,17 @@ public class PanelCarreras extends Panel{
 		setBackground(Ventana.background);
 		
 		var contenedorTitulo = new Panel();
-		contenedorTitulo.size(1000, 50);
-		contenedorTitulo.flow(FlowLayout.LEFT);
+		contenedorTitulo.size(1000, 80);
+		contenedorTitulo.setMaximumSize(new Dimension(1500, 80));
+		contenedorTitulo.border();
 		contenedorTitulo.setBorder(BorderFactory.createEmptyBorder(10,100,10,100));
 		contenedorTitulo.setBackground(Ventana.background);
-		contenedorTitulo.add(titulo);
+		contenedorTitulo.add(titulo, BorderLayout.CENTER);
 		add(contenedorTitulo);
+
+		var agregar = new BotonNuevo("Agregar Carrera");
+		agregar.agregarContenedor(contenedorTitulo);
+		agregar.addActionListener((e) -> Ventana.CambiarPanel("Agregar Carrera"));
 		
 		String[][] datos = new String[10][4];
 		
@@ -37,7 +41,7 @@ public class PanelCarreras extends Panel{
 		    datos[i][2] = "Apellido_" + (i + 1);          // Apellido
 		    datos[i][3] = String.valueOf(18 + (i % 50));  // Edad entre 18 y 67
 		}
-		
+
 		listaCarreras = new Tabla(datos, 4, (data) -> System.out.println("Editar: " + data[0]), (data) -> System.out.println("Eliminar: " + data[0]));
 		ScrollPanel scroll = new ScrollPanel(listaCarreras, Ventana.background, Ventana.backgroundTabla);
 		scroll.setBorder(BorderFactory.createEmptyBorder(10,100,10,100));
