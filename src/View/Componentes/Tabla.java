@@ -8,7 +8,7 @@ public class Tabla extends Panel {
 	private String[] columnas;
 	private String[][] filas;
 	
-	public Tabla(String[][] filas, int gap, Consumer<String[]> editar, Consumer<String[]> eliminar) {
+	public Tabla(String[][] filas, int gap, Consumer<String[]> editar) {
 		box("col");
 		setBackground(Ventana.background);
 		
@@ -19,7 +19,6 @@ public class Tabla extends Panel {
 		for (int i = 1; i < filas.length; i++) {
             TablaFila fila = new TablaFila(filas[i], gap, Ventana.backgroundTabla, true);
             fila.agregarAccionEditar(editar);
-            fila.agregarAccionEliminar(eliminar);
             fila.setAlignmentX(LEFT_ALIGNMENT);
             add(fila);
 

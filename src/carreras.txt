@@ -1,0 +1,10 @@
+Ingeniería Civil;5;A
+Ingeniería Informática;4;B
+Arquitectura;3;C
+Medicina;6;D
+Derecho;2;E
+Administración;3;A
+Contabilidad;4;B
+Psicología;3;C
+Biología;5;D
+Comunicación;2;E

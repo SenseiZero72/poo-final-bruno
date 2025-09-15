@@ -8,6 +8,7 @@ public class Carrera {
 private String nombre;
 private int cantidadOptativasNecesarias;
 private PlanDeEstudios plan;
+private String tipoPlan;
 
 public String getNombre() { return nombre; }
 public Carrera(String nombre, int cantidadOptativasNecesarias) {
@@ -25,6 +26,7 @@ public void setCantidadOptativasNecesarias(int cantidadOptativasNecesarias) {
     this.cantidadOptativasNecesarias = cantidadOptativasNecesarias; 
 }
 public void crearPlan(String tipo) {
+    this.tipoPlan=tipo;
         switch (tipo) {
             case "A":
                 plan = new PlanA();
@@ -61,8 +63,14 @@ public void crearPlan(String tipo) {
     public void agregarMateriaAlPlan(Materia materia, int cuatrimestre) {
         plan.agregarMateria(materia, cuatrimestre);
     }
+    public void agregarCorrelativaMateria(Materia materia, Materia correlativa) {
+        plan.agregarCorrelativa(materia, correlativa);
+    }
 	public boolean finalizo(Map<Materia,Cursada> estado){
 		return plan.termino(estado,cantidadOptativasNecesarias);
 	}
 
+    public String getTipoPlan() {
+        return tipoPlan;
+    }
 }

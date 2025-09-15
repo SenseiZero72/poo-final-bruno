@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 
 public class TablaFila extends Panel {
 	
-	private BotonBase btnEditar, btnEliminar;
+	private BotonBase btnEditar;
 	private String[] valores;
 	
 	public TablaFila(String[] valores, int gap, Color color, boolean acciones) {
@@ -21,10 +21,10 @@ public class TablaFila extends Panel {
 		box("");
 		padding(5, 5);
 		setBackground(color);
-		
+
 		int columnas = valores.length;
 		int height = 40;
-		
+
 		for (int i = 0; i < columnas; i++) {
 			
             Panel celda = new Panel();
@@ -32,7 +32,7 @@ public class TablaFila extends Panel {
             celda.setPreferredSize(new Dimension(100, height));
             celda.setMaximumSize(new Dimension(Integer.MAX_VALUE, height));
             
-            JLabel label = new JLabel(valores[i], SwingConstants.CENTER);
+            JLabel label = new JLabel(valores[i], SwingConstants.LEFT);
             label.setForeground(Ventana.text);
             label.setFont(Ventana.fuenteNav);
             celda.setLayout(new java.awt.BorderLayout());
@@ -60,23 +60,12 @@ public class TablaFila extends Panel {
             		Ventana.boton_editar_pressed,
             		Ventana.text
             );
-            
-            btnEliminar = new BotonBase("Eliminar");
-            btnEliminar.setFontLabel(Ventana.fuenteNav);
-            btnEliminar.setColors(
-            		Ventana.boton_eliminar_normal,
-            		Ventana.boton_eliminar_hover,
-            		Ventana.boton_eliminar_pressed,
-            		Ventana.text
-            );
 
             Dimension btnSize = new Dimension(90, 25);
             btnEditar.setPreferredSize(btnSize);
-            btnEliminar.setPreferredSize(btnSize);
 
             celdaAcciones.add(btnEditar);
             celdaAcciones.addGap(5, 0);
-            celdaAcciones.add(btnEliminar);
 
             add(celdaAcciones);
         }
@@ -87,11 +76,6 @@ public class TablaFila extends Panel {
 			btnEditar.addActionListener((e) -> consumer.accept(valores));
 		}
 	}
-	
-	public void agregarAccionEliminar(Consumer<String[]> consumer) {
-		if (btnEliminar!=null) {
-			btnEliminar.addActionListener((e) -> consumer.accept(valores));
-		}
-	}
+
 
 }

@@ -1,0 +1,18 @@
+Matemática1;OBLIGATORIA;true
+Matemática2;OBLIGATORIA;true
+Programación2;OBLIGATORIA;true
+Programación1;OBLIGATORIA;true
+
+Física;OBLIGATORIA;false
+Química;OPTATIVA;true
+Historia;OPTATIVA;false
+Literatura;OPTATIVA;false
+Biología;OBLIGATORIA;false
+Geografía;OPTATIVA;true
+Filosofía;OPTATIVA;false
+Economía;OBLIGATORIA;true
+Psicología;OPTATIVA;true
+Sociología;OPTATIVA;false
+Arte;OPTATIVA;true
+Educación Física;OBLIGATORIA;false
+Inglés;OBLIGATORIA;true

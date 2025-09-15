@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import Model.Alumno;
 import Model.Facultad;
 import Model.Carrera;
@@ -13,17 +15,11 @@ public class ControladorCarreras {
 
     private final Facultad facultad;
 
-    public ControladorCarreras(Facultad facultad) {
-        this.facultad = facultad;
+    public ControladorCarreras() {
+        this.facultad = Facultad.getInstanciaFacultad();
     }
-    public List<String> obtenerNombresCarreras() {
-        List<String> nombres = new ArrayList<>();
-
-        for (Carrera c : facultad.getCarrerasMap().values()) {
-            nombres.add(c.getNombre());
-        }
-
-        return nombres;
+    public Map<String, Carrera> obtenerNombresCarreras() {
+        return facultad.getCarrerasMap();
     }
     public String darAltaCarrera(String nombre, int cantOptativas, String tipoPlan) {
         if (facultad.getCarrerasMap().containsKey(nombre)) {

@@ -34,9 +34,12 @@ public class Ventana extends JFrame{
 		body.setBackground(background);
 		var nav = new NavBar();
 		body.add(nav, BorderLayout.NORTH);
-		panelActual = new PanelCarreras();
+        Facultad facultad = Facultad.getInstanciaFacultad();
+        Carrera carreraPrueba = facultad.getCarrerasMap().get("Ingeniería Informática");
+        panelActual = new PanelEditarCarrera(carreraPrueba);
 		paneles.put("Carreras",panelActual);
 		paneles.put("Materias",new PanelMaterias());
+        paneles.put("EditarCarrera",panelActual);
 		paneles.put("AgregarMateria",new PanelAgregarMateria());
 		ControladorEstudiantes ctrlEstudiantes = new ControladorEstudiantes(Facultad.getInstanciaFacultad());
 		paneles.put("Estudiantes", new PanelEstudiantes(ctrlEstudiantes));
